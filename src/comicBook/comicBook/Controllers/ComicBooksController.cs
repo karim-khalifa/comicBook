@@ -9,9 +9,13 @@ namespace comicBook.Controllers
     public class ComicBooksController : Controller
     {
         // GET: ComicBooks
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+        public string Detail()
         {
-            return View();
+            return "Hello from comic books controller!";
         }
     }
 }
