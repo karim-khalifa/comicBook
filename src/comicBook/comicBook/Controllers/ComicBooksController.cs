@@ -15,11 +15,7 @@ namespace comicBook.Controllers
         //}
         public ActionResult Detail()
         {
-            if (DateTime.Today.DayOfWeek == DayOfWeek.Thursday)
-            {
-                return Redirect("/");
-            }
-            return Content("Hello from comic books controller!");
+            return View();
         }
     }
 }
