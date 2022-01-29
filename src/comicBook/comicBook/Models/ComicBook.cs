@@ -22,7 +22,7 @@ namespace comicBook.Models
             }
         }
 
-        public string CovverImageFileName
+        public string CoverImageFileName
         {
             get
             {
