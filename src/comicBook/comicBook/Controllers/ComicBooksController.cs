@@ -3,33 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using comicBook.Data;
 using comicBook.Models;
 
 namespace comicBook.Controllers
 {
     public class ComicBooksController : Controller
     {
-        // GET: ComicBooks
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-        public ActionResult Detail()
+        private ComicBookRepository _comicBookRepository = null;
+        public ComicBooksController()
         {
-            ComicBook comicBook = new ComicBook()
+            _comicBookRepository = new ComicBookRepository();
+        }
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
             {
-                SeriesTitle = "The Amazing Spider-Man",
-                IssueNumber = 700,
-                DescriptionHtml = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
-                Artists = new Artist[]
-                {
-                    new Artist() { Name = "Script", Role = "Dan Slott"},
-                    new Artist() { Name = "Pencils", Role = "Humberto Ramos"},
-                    new Artist() { Name = "Inks", Role = "Victor Olazaba"},
-                    new Artist() { Name = "Colors", Role = "Edgar Delgado"},
-                    new Artist() { Name = "Letters", Role = "Chris Eliopoulos"}
-                }
-            };
+                return HttpNotFound();
+            }
+            var comicBook = _comicBookRepository.GetComicBook((int)id);
+            
             return View(comicBook);
         }
     }
